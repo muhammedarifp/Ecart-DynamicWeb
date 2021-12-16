@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-4">
+            <form action="/login" method="post" enctype="multipart/form-data">
+                <legend style="font-weight: bold;">Login</legend>
+
+                <div class="form-group pt-3">
+                    <label for="last_name">Email</label>
+                    <input type="email" class="form-control pt-2" name="Email">
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="email">Password</label>
+                    <input type="password" class="form-control pt-2" name="Pwd">
+                </div>
+
+                <p>{{LoginError}}</p>
+
+                <button type="submit" class="btn btn-primary mt-3">LOGIN</button>
+                <a href="/signup" style="float: right; font-weight: bold; text-decoration: none;" class="pt-4">Create account..!</a>
+                
+            </form>
+        </div>
+    </div>
+</div>

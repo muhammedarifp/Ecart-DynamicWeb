@@ -1,0 +1,51 @@
+{{!-- users-view --}}
+<script src=""></script>
+
+<section>
+    <div class="container mt-5">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">More</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {{#each users}}
+
+              <tr>
+                <td>{{this.Name}}</td>
+                <td>{{this.Email}}</td>
+                <td><button onclick="AdminBanUser('{{this._id}}')">Ban User</button></td>
+              </tr>
+
+              {{/each}}
+
+            </tbody>
+          </table>
+    </div>
+</section>
+
+<script>
+  function AdminBanUser(userId){
+    console.log(userId)
+    $.ajax({
+      url:'/admin/admin-ban-user',
+      method:'post',
+      data:{
+        userId
+      },
+      success:(respons)=>{
+        if(respons.ban){
+          location.reload();
+          alert("User banned")
+        }else{
+          location.reload();
+          alert("oops..User banned Failed")
+        }
+      }
+    })
+  }
+</script>

@@ -1,0 +1,130 @@
+<section>
+    <form action="" id="check-out-form">
+        <div class="container">
+            <div class="addrass" style="margin-top: 20px;">
+                <h3>Type Your address</h3>
+                <div style="margin-top: 40px;" class="col-md-6">
+                    <div>
+                        <label id="addr-address" for="">Adrress</label>
+                        <input required id="addr-address" name="address" type="text" placeholder="Type here"
+                            style="margin-left: 35px; margin-top: 15px;" class="addr-input">
+                    </div>
+                    <div>
+                        <label id="addr-pin" for="">PinCode</label>
+                        <input required id="addr-pin" type="text" name="pincode" placeholder="Type here"
+                            style="    margin-top: 15px; margin-left: 29px;" class="addr-input">
+                    </div>
+                    <div>
+                        <label id="addr-ph" for="">Number </label>
+                        <input required id="addr-ph" type="tel" name="number" placeholder="Type here"
+                            style="    margin-top: 15px; margin-left: 29px;" class="addr-input">
+                    </div>
+                    <div>
+                        <input id="userId" name="userId" value="{{user._id}}" type="text" hidden>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <button class="btb btn-success" type="submit">Checkout</button>
+                    </div>
+                </div>
+                <div class="select-pay-meth col-md-6">
+                    <h4 id="select-pay-txt">Select payment method</h4>
+                    <div class="option" style="margin-left: 20px; margin-top: 19px;">
+                        <div>
+                            <input required name="pay-meth" id="online-pay" value="Online pay" type="radio">
+                            <label id="online-pay" for="Online-pay">ONINE PAY</label>
+                            <p style="color: red; font-size: 11px; font-family: cursive;">Selecting this option will get
+                                you a lot of offers</p>
+                        </div>
+                        <div>
+                            <input required name="pay-meth" id="cod-pay" value="COD" type="radio">
+                            <label id="cod-pay" for="COD">COD</label>
+                            <p style="color: red; font-size: 11px; font-family: cursive;">cash on delivery</p>
+                        </div>
+                        <div>
+                            <h5>Total amount : {{total}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+
+<script>
+    $("#check-out-form").submit((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: "/place-order",
+            dataType: 'json',
+            data: $("#check-out-form").serialize(),
+            method: 'post',
+            success: (respons) => {
+                if (respons.codSuccess) {
+                    location.href = '/order-success'
+                } else {
+                    //alert(JSON.stringify(respons))
+                    razorpayOrder(respons)
+                    //alert(JSON.stringify(respons))
+                }
+            }
+        })
+    })
+
+    function razorpayOrder(order) {
+        //alert(JSON.stringify(order.amount))
+        order.amount=parseInt(order.amount)
+        var options = {
+            "key": "rzp_test_x0mR1qXVydN98S", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Shikkari Ameen",
+            "description": "Test payment",
+            "image": "https://example.com/your_logo",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+                //alert(response.razorpay_payment_id);
+                //alert(response.razorpay_order_id);
+                //alert(response.razorpay_signature);
+
+                verifyPayment(response, order)
+            },
+            "prefill": {
+                "name": "Test",
+                "email": "abc@gamil.com",
+                "contact": "9999999999"
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+
+    }
+
+    function verifyPayment(respons, order) {
+        $.ajax({
+            url: '/verify-order',
+            data: {
+                respons,
+                order
+            },
+            method: 'post',
+            success: (respons) => {
+
+                if(respons.statuz){
+                    location.href = '/order-success'
+                }else{
+                    alert("Order Not complete")
+                }
+
+            }
+        })
+    }
+</script>

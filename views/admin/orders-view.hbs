@@ -1,0 +1,43 @@
+<section>
+    <div class="container mt-5">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Pay Meth</th>
+                <th scope="col">More</th>
+              </tr>
+            </thead>
+            <tbody>
+
+
+                {{#each DetailedOrder}}
+
+              <tr>
+                <th>{{this.proDetails.Name}}</th>
+                <td><img style="width: 50px; height: 50px;" src="/Pro-imgs/{{this.item}}.jpg" alt=""></td>
+                <td>{{this.date}}</td>
+                <td>
+                  {{this.status}}
+                </td>
+                <td>{{this.PayMethod}}</td>
+                <td><a id="view-more-txt" href="/view-order-details/{{this.item}}">View More</a></td>
+              </tr>
+
+                {{/each}}
+
+            </tbody>
+          </table>
+    </div>
+</section>
+
+<script>
+  function StateChange(){
+    let NewStatus=document.getElementById('Status-Cha').innerHTML
+    console.log(NewStatus)
+  }
+</script>
+

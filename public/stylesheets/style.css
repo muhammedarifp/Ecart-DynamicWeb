@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+.cart-screen{
+    width: 45px;
+    text-align: center;
+    background: none;
+    border: solid 1px gray;
+    background: gray;
+    color: #ffffff;
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+}
+#totalpriceText{
+    font-family: inherit;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-top: 10px;
+    padding-top: 10px;   
+    text-align: center;
+}
+#buy-btn{
+    font-family: sans-serif;
+    width: 25em;
+}
+.addr-input{
+    width: 370px;
+    height: 38px;
+    font-family: cursive;
+}
+.select-pay-meth{
+    height: 100px;
+    background-color: #ffffff;
+    float: right;
+    margin-top: -17em;
+    margin-right: 8em;
+    height: 14em;
+    border: solid 1px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#select-pay-txt{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#view-more-txt{
+    text-decoration: none; 
+    font-family:'Ubuntu', sans-serif;
+    cursor: progress;
+    
+}
+
+#Pro-add-btn{
+    width: 10em;
+    cursor: cell;
+    margin-right: 20em;
+    font-family: 'Ubuntu', sans-serif;
+}

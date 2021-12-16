@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-4">
+            <form action="/signup" method="post" enctype="multipart/form-data">
+                <legend style="font-weight: bold;">Signup</legend>
+
+                <div class="form-group">
+                    <label for="first_name">Name</label>
+                    <input type="text" class="form-control" name="Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Email</label>
+                    <input type="email" class="form-control" name="Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Password</label>
+                    <input type="password" class="form-control" name="Pwd" minlength="4">
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">SIGNUP</button>
+                <a href="/login" style="float: right; font-weight: bold; text-decoration: none;" class="pt-4">Login Account</a>
+            </form>
+        </div>
+    </div>
+</div>

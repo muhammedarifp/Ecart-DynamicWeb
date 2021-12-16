@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-4">
+            <form action="/admin/edit-product/{{product._id}}" method="post" enctype="multipart/form-data">
+                <legend style="font-weight: bold;">Edit product</legend>
+
+                <div class="form-group">
+                    <label for="first_name">Product name</label>
+                    <input type="text" class="form-control" name="Name" id="first_name" value="{{product.Name}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Catogary</label>
+                    <input type="text" class="form-control" name="Catogary" id="Catogary" value="{{product.Catogary}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Discription</label>
+                    <input type="text" class="form-control" name="Discription" id="Discription" value="{{product.Discription}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="pw">Price</label>
+                    <input type="number" class="form-control" name="Price" id="pw" value="{{product.Price}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="pw_confirm">Current Image</label>
+                    <img src="/Pro-imgs/{{product._id}}.jpg" style="height: 70px; width: 70px;" class="mt-3">
+                    <input type="file" class="form-control mt-3" name="Image" id="pw_confirm" req>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">UPDATE</button>
+            </form>
+        </div>
+    </div>
+</div>

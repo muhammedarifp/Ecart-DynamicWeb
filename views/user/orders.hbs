@@ -1,0 +1,30 @@
+<section>
+    <div class="container">
+        <table class="table mt-5">
+            <thead>
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Qutty</th>
+                <th scope="col">Pay method</th>
+                <th scope="col">Status</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            {{#each orders}}
+
+              <tr>
+                <th>{{this.orderItems.Name}}</th>
+                <th>{{this.quntity}}</th>
+                <td>{{this.Method}}</td>
+                <td>{{this.status}}</td>
+                <td>{{this.date}}</td>
+              </tr>
+
+            {{/each}}
+
+            </tbody>
+          </table>
+    </div>
+</section>

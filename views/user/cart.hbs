@@ -1,0 +1,55 @@
+<section>
+    <div class="container mt-5">
+        <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Img</th>
+      <th scope="col">Qntity</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {{#each cartItems}}
+      
+    <tr>
+      
+      <td>{{this.product.Name}}</td>
+      <td><img src="/Pro-imgs/{{this.product._id}}.jpg" style="width: 60px; height: 60px;"></td>
+      
+      <td>
+        <button id="count-minus-btn" class="btn btn-secondary" style="margin-right: 10px; margin-top: 10px; width: 38px; " onclick="countButton('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+        <span id="{{this.product._id}}">{{this.quantity}}</span>
+        <button class="btn btn-secondary" style="margin-left: 10px; margin-top: 10px;" onclick="countButton('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+      </td>
+
+      <td>
+        <h5>{{this.product.Price}}</h5>
+      </td>
+ 
+      <td>
+        <button class="btn btn-danger" style="margin-top: 10px;" onclick="cartItemRemove('{{this._id}}','{{this.product._id}}')">Remove</button>
+      </td>
+
+    </tr>
+
+      {{/each}}
+
+  </tbody>
+</table>
+    </div>
+</section>
+
+<div class="container">
+  <footer style="background-color: rgb(233, 233, 233); width: 100%; height: 110px; margin-top: 300px; z-index: 1; border: solid 1px;">
+    <h5 id="totalpriceText">TOTTAL PRICE :<span id="total-price">{{Total}}</span></h5>
+    <div style="text-align: center; margin-top: 16px;">
+       <a href="/buy-product" id="buy-btn" class="btn btn-info">Buy now</a>
+    </div>
+  </footer>
+</div>
+
+
+
+ 
